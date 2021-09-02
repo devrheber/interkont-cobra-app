@@ -1,0 +1,60 @@
+{
+  "expo": {
+    "name": "Siente App",
+    "slug": "siente",
+    "privacy": "public",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.2.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.interkont.siente",
+      "buildNumber": "0.0.3",
+      "config": {
+        "googleMapsApiKey": "AIzaSyDk52Wi9DeKShBvpqRJ09pxKG9FN0zNCZU"
+      },
+      "infoPlist": {
+        "NSLocationAlwaysUsageDescription": "This app uses the location."
+      }
+      
+    },
+    "android": {
+      "package": "com.interkont.siente",
+      "versionCode": 5,
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDeMPcZRdLZCHQUT7Bchfeah5kzXLbX5-Q"
+        }
+      }
+      ,"permissions": []
+    },
+    "description": "",
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "ideas-qi",
+            "project": "ideas-qi",
+            "authToken": "73747841ae104ac7ade83855cf6a0f8d8e30a4b162dc44f791740bc7f7fb7048"
+          }
+        }
+      ]
+    }
+  }
+}
