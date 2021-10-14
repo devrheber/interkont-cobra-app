@@ -44,7 +44,7 @@ class LoginScreen extends Component {
     this.keyboardDidShowListener = Keyboard.addListener('keyboardDidShow', this._keyboardDidShow.bind(this));
     this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide', this._keyboardDidHide.bind(this));
   }
-  
+
   /**
    * componentWillUnmount
    * @param {*} e
@@ -114,7 +114,7 @@ class LoginScreen extends Component {
       this.setState({ showIndicator: false })
     }
   }
-  
+
   setUser(text) {
     this.user = text
     this.userOriginal = text
@@ -144,7 +144,7 @@ class LoginScreen extends Component {
   }
 
   render() {
-    
+
     const keyboardWillShowLoginLoginPane = {
       marginTop: this.state.keyboardDidShow ? 0 : 80,
     }
@@ -183,15 +183,15 @@ class LoginScreen extends Component {
             onPress={() => this.login()}
             style={styles.buttonLogin}>
             <View style={[{flexDirection: 'row', padding: 2, justifyContent: 'center', alignItems: 'center'}]}>
-              { this.state.showIndicator ? 
-                <ActivityIndicator 
-                  size="small" 
-                  color="#ffffff" 
+              { this.state.showIndicator ?
+                <ActivityIndicator
+                  size="small"
+                  color="#ffffff"
                 /> : <Text style={styles.textButtonLogin}> INGRESAR </Text>
               }
             </View>
           </TouchableOpacity>
-          
+
           <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', marginTop: 20}}>
             <Image style={styles.imagenLoginPowered} resizeMode="contain"
               source={require("../../resources/images/login/powered.png")}

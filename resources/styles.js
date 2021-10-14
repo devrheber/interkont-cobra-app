@@ -8,7 +8,7 @@ const window = Dimensions.get('window');
 export const colors = {
   primary: '#575a9d',
   accent: '#ef6837',
-  blueGradient: ['#575a9d','#002f5e'],
+  blueGradient: ['#9A88FF','#725CF1'],
   gradientPreload: ['#39b49a', '#39b49a'],
   orangeGradient: ['#ef6837','#f3973e'],
   darkBlueGradient: ['#0f7373', '#0a5050'],
@@ -289,21 +289,21 @@ export const styles = StyleSheet.create({
     padding:20
   },
   boxInfoContainer:{
-    backgroundColor: '#ffffff', 
+    backgroundColor: '#ffffff',
     marginTop:20,
     marginBottom:10
   },
   counterContainerBottom:{
-    paddingTop:10, 
-    alignItems:'center', 
-    flexDirection: 'row', 
-    flex:1, 
-    justifyContent:'center' 
+    paddingTop:10,
+    alignItems:'center',
+    flexDirection: 'row',
+    flex:1,
+    justifyContent:'center'
   },
   counterContainerBottomText:{
-    flex:0, 
+    flex:0,
     color:'#ffffff',
-    fontSize:12 
+    fontSize:12
   },
   alertFinishedProjectStyle:{
     fontFamily: 'Montserrat-Bold',
@@ -324,10 +324,10 @@ export const styles = StyleSheet.create({
     height:25
   },
   activeAccordion: {
-    
+
   },
   inactiveAccordion: {
-    
+
   },
   imagenProyecto: {
     alignSelf: 'center',
@@ -429,8 +429,7 @@ export const styles = StyleSheet.create({
   },
   imagenLoginPowered: {
     flex: 1,
-    height: 180,
-    width: 150
+    width: 200
   },
   inputWithIcon: {
     flexDirection: 'row',
@@ -483,7 +482,7 @@ export const styles = StyleSheet.create({
     borderWidth:1,
     padding:20,
     margin:3,
-    flex:1, 
+    flex:1,
   },
   projectScrollViewContent:{
     marginBottom:100,
@@ -500,7 +499,7 @@ export const styles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.3,
-    shadowRadius: 2,  
+    shadowRadius: 2,
     elevation: 5,
     borderBottomColor: '#002f5e',
     borderBottomWidth: 1

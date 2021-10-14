@@ -88,8 +88,9 @@ class DashboardScreen extends Component {
       }
     }
 
-    this.handleInputChange = this.handleInputChange.bind(this)
-    this.centrarMapa();      
+    console.error(this.state);
+    // this.handleInputChange = this.handleInputChange.bind(this)
+    // this.centrarMapa();
   }
 
   /**
@@ -131,7 +132,7 @@ class DashboardScreen extends Component {
     if (status !== 'granted') {
       alert('Location permission not granted.');
     }
-    
+
     /*Permissions.request(Permissions.LOCATION, {
       'title': 'Allow device location access for a better experience in Siente APP',
       'message': 'Siente APP works better, collecting location data to allow knowing the distance and location of the projects managed in Siente APP only if the application is in use',
@@ -178,7 +179,7 @@ class DashboardScreen extends Component {
 
   /**
    * center map related to points
-   * get centroid 
+   * get centroid
    * @see https://github.com/react-native-community/react-native-maps/issues/1325
    * @returns
    * @memberof DashboardScreen
@@ -335,7 +336,7 @@ class DashboardScreen extends Component {
   async verProyecto(codigoproyecto) {
     const { navigate } = this.props.navigation
     proyecto = await getProyecto(codigoproyecto, this.state.latitud, this.state.longitud)
-    
+
     this.props.dispatch({
       type: 'SET_PROYECTO',
       payload: {
@@ -343,7 +344,7 @@ class DashboardScreen extends Component {
         fromMenu: false
       }
     })
-    
+
     navigate('Project')
     this.cerrarValla()
   }
@@ -356,7 +357,7 @@ class DashboardScreen extends Component {
    */
   async abrirValla(codigoproyecto) {
     proyecto = await getProyecto(codigoproyecto, this.state.latitud, this.state.longitud)
-    
+
     this.props.dispatch({
       type: 'SET_PROYECTO',
       payload: {
@@ -408,7 +409,7 @@ class DashboardScreen extends Component {
             {this.state.vallaVisible ?
               <Valla
                 proyecto={this.state.proyecto}
-                verProyecto={(codigoProyecto) => this.verProyecto(codigoProyecto)} 
+                verProyecto={(codigoProyecto) => this.verProyecto(codigoProyecto)}
               /> : null
             }
             <TouchableOpacity
@@ -479,7 +480,7 @@ class DashboardScreen extends Component {
       <PubNubProvider client={pubnub}>
         <PubNubConsumer>
             {client => {
-              
+
               client.subscribe({
                 channels: ['CondorChannel'],
                 withPresence: true
@@ -499,14 +500,14 @@ class DashboardScreen extends Component {
               );
             }}
         </PubNubConsumer>
-        <KeyboardAvoidingView 
+        <KeyboardAvoidingView
           style={[styles.container]}
           behavior= { (Platform.OS === 'ios') ? "padding" : null } >
-          <Search buscar={() => this.buscar()} 
+          <Search buscar={() => this.buscar()}
                   handleInputChange={(e) => this.handleInputChange(e)}
-                  mapa={() => this.mapa()} 
+                  mapa={() => this.mapa()}
                   keyboardDidShow={this.state.keyboardDidShow}
-                  lista={() => this.lista()} 
+                  lista={() => this.lista()}
                   verMapa={this.state.verMapa} />
           { !this.state.keyboardDidShow ? <Indicadores indicador={this.state.categoriaSeleccionada} /> : null }
           { !this.state.keyboardDidShow ? <Filtros
@@ -534,7 +535,7 @@ function Filtros(props) {
   let indicadores = props.indicadores
   const keyboardWillShowSearch = {
     flexGrow : props.keyboardDidShow ? 0.3 : undefined,
-    flexShrink:0, 
+    flexShrink:0,
     flexBasis:"0%"
   }
   const keyboardWillHideSearch = {
@@ -545,16 +546,16 @@ function Filtros(props) {
         <ScrollView horizontal={true} style={{ flex: 1 }} showsHorizontalScrollIndicator={false}>
           {
             indicadores.map((indicador, i) => {
-              return <TouchableOpacity 
+              return <TouchableOpacity
                   key={i} style={{ flex: 1, width:90,height:90, margin:4, ...isSelectedCategoria(indicador.codigocategoria, props.categoriaSeleccionada)} }
                   onPress={() => props.seleccionarCategoria(indicador)}
                 >
                   <Image
-                    style={{ 
-                      flex: 1, 
-                      alignSelf: 'stretch', 
+                    style={{
+                      flex: 1,
+                      alignSelf: 'stretch',
                       width:90,
-                      
+
                     }}
                     source={ getImagenCategoriaIndicador(indicador.codigocategoria, props.categoriaSeleccionada )}
                     resizeMode="contain"
@@ -621,10 +622,10 @@ function Valla(props) {
     <View style={[styles.valla, {backgroundColor: colorCategoria}]}>
       <View style={{flex: 0.65, flexDirection: 'row'}}>
         <View style={{flex: 0.2}}>
-          <Image style={[styles.imagenProyectoValla,{ zIndex:9 }]} 
+          <Image style={[styles.imagenProyectoValla,{ zIndex:9 }]}
                  source={{uri: imagenProyecto}} />
           <Image style={[styles.imagenProyectoValla,{ zIndex:1 }]}
-            source={getImagenCategoria(proyecto.codigocategoria)} 
+            source={getImagenCategoria(proyecto.codigocategoria)}
           />
         </View>
         <View style={{flex: 0.8, marginLeft: 10}}>
@@ -701,7 +702,7 @@ function Search(props){
           <TouchableOpacity
               onPress={() => props.mapa()}
               style={props.verMapa ? styles.buttonFormSelected : styles.buttonForm}>
-              <View 
+              <View
                 style={[{
                   flexDirection: 'row',
                   paddingLeft: 10,
@@ -743,7 +744,7 @@ function Search(props){
 function Indicadores(props) {
   let indicador = props.indicador
   let codigoCategoria = indicador.codigocategoria
-  
+
   return (
       <View style={{flex: 0.1, flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: '#FFFFFF'}}>
         <ScrollView

@@ -1,9 +1,9 @@
 import { AsyncStorage } from 'react-native'
 
-const urlApi = "http://siente.gestiondelriesgo.gov.co:7071/siente3-ws-consulta"
-export const urlApiImagenes = "https://siente.gestiondelriesgo.gov.co"
-
-// export const urlApiImagenes = "https://condor.car.gov.co"
+// const urlApi = "http://sienteapp.gestiondelriesgo.gov.co:7071/siente3-ws-consulta"
+// export const urlApiImagenes = "http://sienteapp.gestiondelriesgo.gov.co"
+const urlApi = "http://13.59.62.87:7074/avanzame-ws";
+export const urlApiImagenes = "http://13.59.62.87"
 
 export async function getConfigurationApp(){
   let config
@@ -50,7 +50,7 @@ export async function login(user, password){
         'Content-Type': 'application/json'
       }
     })
-    
+
     userResponse.code = response.status
     userResponse.token = response.headers.map.authorization
 
@@ -113,7 +113,7 @@ async function getProyectos(categoria, nombre = "", latitud, longitud){
       "longitud" : longitud,
       "latitud" : latitud
     }
-    let response = await fetch(urlApi + "/vista-lista",
+    let response = await fetch(urlApi + "/vista-lista-consulta",
     {
       method: 'POST',
       body: JSON.stringify(data), // data can be `string` or {object}!
@@ -122,7 +122,7 @@ async function getProyectos(categoria, nombre = "", latitud, longitud){
         'Authorization': token,
       }
     })
-    
+
     proyectos = await response.json()
   } catch(e) {
     console.error('Error getting proyectos with api: ', e)
@@ -166,7 +166,7 @@ export async function getIndicadores(){
   let { token } = await getLocalUserInfo()
 
   try {
-    var data = {  
+    var data = {
       "categoriaproyecto": -1
     }
     let response = await fetch(urlApi + "/indicadores-globales",
